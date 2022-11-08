@@ -9,21 +9,19 @@ console.log(dayjs());
 
 // ??? Lists specific hour ??
 $("#hour").text(dayjs().hour());
-console.log($("#hour"));
+console.log(dayjs().hour()); //why did I get 21?
 
 // ??? Save text to local storage ???
-var textInput = $("");
+var textInput = $("<textarea>");
 function renderText() {
-  var text = localStorage.getItem(".description");
+  var text = localStorage.getItem("textInput");
   textInput.text = text;
-  console.log(text);
 }
 
-// ??? Need to add this selector ???
+// ??? Need to add 'this' selector ???
 var saveBtn = $(".saveBtn");
 saveBtn.on("click", function () {
-  var text = $("textarea").val;
-  localStorage.setItem("text", text);
+  localStorage.setItem("text", textInput);
   renderText();
 });
 
