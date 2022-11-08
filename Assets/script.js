@@ -7,13 +7,14 @@
 $("#currentDay").text(dayjs().format("dddd, MMM D"));
 console.log(dayjs());
 
-// ??? Lists specific hour ??
+// Lists current hour
 $("#hour").text(dayjs().hour());
-console.log(dayjs().hour()); //why did I get 21?
+console.log(dayjs().hour()); //lists the current hour in 24-hr format in dev tools
 
 // ??? Save text to local storage ???
 var textInput = $("<textarea>");
-function renderText() {
+function renderText(event) {
+  event.preventDefault();
   var text = localStorage.getItem("textInput");
   textInput.text = text;
 }
@@ -25,10 +26,13 @@ saveBtn.on("click", function () {
   renderText();
 });
 
-// Create a function to apply past, present, or future class
+// Create a function to apply color to past, present, or future class on each timeblock
 function timeBlockColor() {
   $(".time-block").each(function () {
-    // var currentBlock = $(this).children("");
+    var pastBlock = $(".past")
+    var currentBlock = $(".present");
+    var futureBlock = $(".future")
+    var currentHour = $(this).attrr(“id”).split(“-“)[1]
   });
 }
 
